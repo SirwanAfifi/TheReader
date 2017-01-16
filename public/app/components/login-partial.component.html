@@ -1,0 +1,14 @@
+﻿<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href="#/home">Home</a>
+        </li>
+        <li>
+            <a href="#/list">List</a>
+        </li>
+        <li>
+            <a href="#/login" ng-if="!model.isLoggedIn">Login</a>
+            <a href="#/logout" ng-if="model.isLoggedIn">Logout</a>
+        </li>
+    </ul>
+</div><!--/.nav-collapse -->

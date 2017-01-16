@@ -1,0 +1,43 @@
+﻿<div class="modal-dialog">
+    <div class="modal-header">
+        <h3>{{modalOptions.headerText}}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-striped">
+                    <tr>
+                        <td>Owner</td>
+                        <td>Year</td>
+                        <td>Language</td>
+                        <td>Average Rating</td>
+                        <td>Pages</td>
+                        <td>Ratings</td>
+                        <td>Text Reviews</td>
+                        <td>Address</td>
+                    </tr>
+                    <tr>
+                        <td>{{ modalOptions.book.owner }}</td>
+                        <td>{{ modalOptions.book.publication_year }}/{{ modalOptions.book.publication_month }}/{{ modalOptions.book.publication_day }}</td>
+                        <td>{{ modalOptions.book.language_code }}</td>
+                        <td>{{ modalOptions.book.average_rating }}</td>
+                        <td>{{ modalOptions.book.num_pages }}</td>
+                        <td>{{ modalOptions.book.ratings_count }}</td>
+                        <td>{{ modalOptions.book.text_reviews_count }}</td>
+                        <td><a href="{{modalOptions.book.url}}">Link</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-sm-12" ng-bind-html="modalOptions.book.description">
+            </div>
+           
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn" data-ng-click="modalOptions.close()">{{modalOptions.closeButtonText}}</button>
+        <button class="btn btn-primary" data-ng-click="modalOptions.ok();">{{modalOptions.actionButtonText}}</button>
+    </div>
+</div>

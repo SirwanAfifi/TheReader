@@ -1,0 +1,102 @@
+﻿<div class="container pt">
+    <toaster-container toaster-options="{'time-out': 3000,'spinner':false}"></toaster-container>
+    <div class="row">
+        <div class="col-lg-4" ng-show="model.isUserAuthenticated">
+            <form role="form" class="form-horizontal" name="newBookForm" ng-submit="model.save()">
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input type="text" name="bookName" class="form-control" placeholder="Book name" ng-model="model.newBook.bookName" required/>
+                        <!--<select id="bookTitle" class="form-control">
+                        </select>-->
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input type="text" name="id" class="form-control" placeholder="Id" ng-model="model.newBook.id" required/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input type="submit" value="Add" class="btn btn-primary" ng-disabled="newBookForm.$invalid"/>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-lg-4">
+            <input type="text" ng-model="searchText" class="form-control" placeholder="Search something...."/>
+        </div>
+    </div>
+    <hr/>
+    <img ng-show="model.loading" src="/img/poi.gif" style="display: block; margin: 0 auto;"/>
+    <div class="row">
+        <div ng-repeat="book in model.books | filter: searchText" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
+            <div class="clearfix" ng-if="$index % 6 == 0"></div>
+            <div class="col-md-2 col-sm-3 col-xs-6 network-item">
+                <div class="grid-item">
+                    <a href="#">
+                        <div class="poster">
+                            <img class="img-responsive" ng-src="{{ book.image_url }}" alt="" ng-click="model.detail(book.id)"/>
+                        </div>
+                    </a>
+                </div>
+                <div class="poster-under">
+                    <a href="#">
+                        <div class="user-avatar">
+                            <img ng-src="{{ model.getGravatarUrl(book.addedBy) }}" alt="{{ book.owner }}">
+                        </div>
+                    </a>
+                    <div class="text">
+                        <a class="username" href="#">{{ book.owner }}</a>
+                        Added
+                        <a href="#">{{ book.bookName }}</a>
+                    </div>
+                </div>
+                <div class="activity-date">
+                    <span class="format-date" title="{{ book.addedAtFarsi }}">{{ book.addedAt }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    /*
+        url: 'https://www.goodreads.com/search/index.xml?key=9pfr0A8xcuDF8axzFCcaCg&q=Ender%27s+Game',
+        dataType: 'jsonp',
+        type: "GET",
+        quietMillis: 50,
+        data: function (params) {
+            return {
+                q: params.term
+            };
+        },
+    */
+    $('#bookTitle').select2({
+        
+        ajax: {
+            url: 'https://www.goodreads.com/search/index.xml?key=9pfr0A8xcuDF8axzFCcaCg&q=Ender%27s+Game',
+            type: 'POST',
+            dataType: 'jsonp',
+            data: function (term, page) {
+                return JSON.stringify({ q: term, page_limit: 10 });
+            },
+            results: function (data) {
+                return { results: xmlToJson(data) };
+            }
+        },
+        minimumInputLength: 1,
+        templateResult: formatRepo
+    });
+
+    function formatRepo(data) {
+        //console.log(JSON.stringify(xmlToJson(data)));
+    }
+
+    // Changes XML to JSON
+    function xmlToJson(data) {
+        var oParser = new DOMParser();
+        var oDOM = oParser.parseFromString(data, "text/xml");
+        return oDOM;
+    }
+</script>

@@ -1,0 +1,35 @@
+{
+  "name": "TheBookDatabase",
+  "version": "0.0.0",
+  "description": "TheBookDatabase",
+  "main": "server.js",
+  "author": {
+    "name": "Sirwan",
+    "email": ""
+  },
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "forEachAsync": "^3.0.0",
+    "http": "0.0.0",
+    "moment": "^2.13.0",
+    "moment-jalaali": "^0.3.8",
+    "mongodb": "^2.1.16",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "underscore": "^1.8.3",
+    "vash": "^0.11.3",
+    "xml2js": "^0.4.16"
+  },
+  "devDependencies": {
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-ng-annotate": "^2.0.0",
+    "gulp-uglify": "^1.5.3",
+    "gulp-watch": "^4.3.5"
+  }
+}

@@ -1,0 +1,13 @@
+﻿<div class="container pt">
+    <div class="row">
+        <div class="col-md-3 col-sm-4" ng-repeat="book in model.books">
+            <div class="book">
+                <a href="{{ book.url }}" title="{{ model.details(book) }}">
+                    <div class="book-cover">
+                        <img width="140" height="212" ng-src="{{ book.image_url }}">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
