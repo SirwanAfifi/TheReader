@@ -1,21 +1,21 @@
-﻿# TheBookDatabase
+﻿### TheBookDatabase
 
 Simple website for managing books using Goodreads API
 
 ![App](https://s23.postimg.org/xns0gcvij/website.jpg)
 
-# Install
+### Install
 ```
 npm install
 ```
 
-# Adding MongoDB connection string
+### Adding MongoDB connection string
 Modify MongoDB connection string in `data/database.js`:
 ```
 var mongoUrl = 'mongodb connection string';
 ```
 
-# Adding your API key
+### Adding your API key
 Modify API key in `services/goodReadsService.js`:
 ```
 var options = {
@@ -23,7 +23,7 @@ var options = {
             path: `/book/show/${id}.xml?key=YOUR-API-KEY`
         };
 ```
-# Run
+### Run
 ```
 npm start
 ```
