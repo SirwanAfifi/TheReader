@@ -1,6 +1,7 @@
 ﻿### TheBookDatabase
 
-Simple website for managing books using Goodreads API
+Simple website for managing books using Goodreads API.
+
 
 ![App](https://s23.postimg.org/xns0gcvij/website.jpg)
 
@@ -27,3 +28,6 @@ var options = {
 ```
 npm start
 ```
+
+#### Inspired By:
+[Node.js for .NET Developers](https://app.pluralsight.com/library/courses/nodejs-dotnet-developers/table-of-contents)
